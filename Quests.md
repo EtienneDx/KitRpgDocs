@@ -6,6 +6,10 @@ This package for KitRpg includes the basics for all quest behaviour contained in
 
 The defines included are the "Quests" define, which simply state wether the quests should be enabled or not, and the "Simple Quest NPCs" define, which enable or disable two simple components that allow you to give and finish a quest on interaction (it's very basic, just good for testing or as an example to implement some quest giving behaviour).
 
+### Compatibility
+
+For now, it is compatible with (== use features of) the Data Saving pack.
+
 ### Usage
 
 You can create new quests by using the create button in the project tab. Each quest object created like this **MUST BE INSIDE A "Resources" FOLDER**. This is very important, since otherwise, it won't be added into the game.
@@ -45,6 +49,9 @@ The descriptionTooltip variable is just the tooltip to be shown on hover the des
 
 This lead me to the actual Objective class. This class must extend the ObjectiveProgression class. Here's the VisitZone example :
 
+    // refer to the inter compatibility for the explanation about the #define and #if statements
+    #define DATA_SAVING
+    
     public class VisitZone : ObjectiveProgression
     {
         private readonly UtilsNS.ObjectFinder<Player> player = new UtilsNS.ObjectFinder<Player>();
@@ -76,6 +83,22 @@ This lead me to the actual Objective class. This class must extend the Objective
                 done = done || GetArgument("Zone Name") == zoneName;
             };
         }
+
+    #if DATA_SAVING
+        
+        // in case we use data saving, I'm saving the done state only
+        public override void Serialize(MemoryStream ms)
+        {
+            SerializeUtils.Serialize(ms, done);
+        }
+        
+        // and I'm getting it back here
+        public override void Deserialize(byte[] ba, ref int offset)
+        {
+            done = SerializeUtils.DeserializeBool(ba, ref offset);
+        }
+
+    #endif
     }
     
 Finally, you need to populate the progressions array, by modifying the partial class Quest. Here's the Visit Zone example :
