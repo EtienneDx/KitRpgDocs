@@ -16,3 +16,7 @@ Another usage is to replace by another text, depending on the value of the varia
     {VarName?This text will be shown if VarName is true:This one will be shown otherwise}
     
 This will check wether the variable string value is literaly "true", and if it's the case, show the first option, or the second otherwise.
+
+If you want to display something only if a certain variable is true, you can do it like this : 
+
+    {VarName?This will be shown if VarName is true}
