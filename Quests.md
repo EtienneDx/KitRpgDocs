@@ -8,7 +8,7 @@ The defines included are the "Quests" define, which simply state wether the ques
 
 ### Usage
 
-You can create new quests by using the create button in the project tab. Each quest object created like this MUST BE INSIDE A "Resources" FOLDER. This is very important, since otherwise, it won't be added into the game.
+You can create new quests by using the create button in the project tab. Each quest object created like this **MUST BE INSIDE A "Resources" FOLDER**. This is very important, since otherwise, it won't be added into the game.
 
 Each quest contains two main arrays : The starting conditions, and the objectives. A quest can only start if all starting conditions are met, and can only be finished if all objectives are done.
 
