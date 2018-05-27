@@ -1,5 +1,5 @@
 # KitRpgDocs
-This package only contains the documentation for all oficial KitRpg packages
+This package contains the documentation for all oficial KitRpg packages
 
 ## Common behaviour documentation
 
