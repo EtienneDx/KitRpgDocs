@@ -107,7 +107,6 @@ Finally, you need to populate the progressions array, by modifying the partial c
     {
         private void PopulateProgressions_Base()
         {
-            // that's not perfect but it will do, since it's not called very often.
             for (int i = 0; i < Template.objectives.Length; i++)
             {
                 if (Template.objectives[i].objectiveType == "Visit Zone")
